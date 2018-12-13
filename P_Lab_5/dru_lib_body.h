@@ -1,107 +1,90 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <utility>
 #include <SFML/Graphics.hpp>
-#include "dru_lib_weapon.h"
 using namespace std;
 
+#ifndef point
+#define point pair<float,float>
+#endif
 #ifndef pause
 #define pause system("pause")
 #endif
-#ifndef N
-#define N 4
+#ifndef N_T
+#define N_T 5
+#endif
+#ifndef size_food
+#define size_food 5
+#endif
+#ifndef start_size_body
+#define start_size_body 15
+#endif
+#ifndef normal_speed
+#define normal_speed 0.5
+#endif
+#ifndef toxic
+#define toxic "toxic"
+#endif
+#ifndef speed
+#define speed "speed"
+#endif
+#ifndef sniper
+#define sniper "sniper"
+#endif
+#ifndef shredder
+#define shredder "shredder"
+#endif
+#ifndef Anton
+#define Anton "Anton"
 #endif
 
+
 template <typename T>
-class minimap // Карта состоит из матрици маленьких квадратиков определённого размера
-// Этот класс и есть маленьким квадратиком
-{
-	const float sizeX=/*...*/;
-	const float sizeY=/*...*/;
-	string cell;	// Имеет в себе слово, что означает вид ячейки:
-	// обычная/можно спрятаться(очень маленький персонаж)/уронит персонажа/
-	// исцеляет отравление/можно есть/временно повыщает покажатели/...
-public:
-	minimap();
-	~minimap();
-	void randCell();
-	void NewCell();
-};
 class body
 {
 	// parameters
 	float size_body; // При получении урона размер уменьшаетсяи и из тела выпадает еда
 	float Speed;
+	float damage;
+protected:
+	string kind;
 	vector<string> privilages; // Пассивное действие на персонажа (яд, ...)
 public:
-	body();
+	body(string *);
 	~body();
-	void set_size_body(/*...*/);
-	void set_damage(/*...*/);
-	void set_Speed(/*...*/);
+	void set_size_body(float *);
+	void set_Speed(float *);
 	void get_size_body();
-	void get_damage();
 	void get_Speed();
+	void istream &operator>>(istream &, body &);
+	void ostream &operator<<(ostream &, body &);
 };
 class food
 {
-	const float size;
+	point position;
 public:
-	food();
+	food(float *, float *);
 	~food();
-	
+	// есть задифайнина хрень size_food забей нужное значение туда и юзай size_food
 };
-class player //Нужно сделать меню выбора персонажа в main.cpp
+class player : body //Нужно сделать функцию меню выбора персонажа
 {
-	T *kind;	// Определим расу персонажа
+	point position;
 public:
-	player();
+	player(float *, float *);
 	~player();
 	void istream &operator>>(istream &, player &);
 	void ostream &operator<<(ostream &, player &);
 };
-class opponent
+class opponent : body
 {
-	T *kind;	// Определим расу персонажа
+	point position;
 public:
-	opponent(){
-		randOpponent();
-	};
-	~opponent();
+	opponent(float *, float *);
+	~opponent()	{delete kind;}
 	void randOpponent();
-};
-// Рассы персонажей:
-// Нужно сделать, что-бы персонажи отличались визуально
-class toxic : body // Отравляет персонажа
-{
-	toxic_W weapon;
-public:
-	toxic();
-	~toxic();
-};
-class speed : body // Может ускорятся, но теряет немного массы
-{
-	classic_W weapon;
-public:
-	speed();
-	~speed();
-	void UP_Speed(/*...*/);
-};
-class sniper : body
-{
-	carabine_W weapon;
-public:
-	sniper();
-	~sniper();
-	
-};
-class shredder : body // Наносит много урона
-{
-	shredder_W weapon;
-public:
-	shredder();
-	~shredder();
-	
 };

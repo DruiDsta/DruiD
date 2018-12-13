@@ -48,9 +48,9 @@
 		</Linker>
 		<Unit filename="dru_lib_body.cpp" />
 		<Unit filename="dru_lib_body.h" />
-		<Unit filename="dru_lib_weapon.cpp" />
-		<Unit filename="dru_lib_weapon.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="map_game.cpp" />
+		<Unit filename="map_game.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

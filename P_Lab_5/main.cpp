@@ -1,8 +1,9 @@
 #include <iostream>
 #include <cstdlib>
+#include <utility>
 #include <SFML/Graphics.hpp>
 #include "dru_lib_body.h"
-#include "dru_lib_weapon.h"
+#include "map_game.h"
 using namespace std;
 
 int main()
