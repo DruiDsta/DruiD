@@ -2,19 +2,26 @@
 
 void body::body(){
 	this->size_body=start_size_body;
-	this->speed=normal_speed;
+	this->Speed=normal_speed;
 }
 void body::set_size_body(float *size){
 	this->size_body=size;
 }
-void body::set_Speed(float *speed){
-	this->Speed=speed;
+void body::set_Speed(float *sp){
+	this->Speed=sp;
 }
-void body::get_size_body(){
+void set_position(float *f, float *s){
+	this->position.first=f;
+	this->position.second=s;
+}
+float body::get_size_body(){
 	return this->size_body;
 }
-void body::get_Speed(){
+float body::get_Speed(){
 	return this->Speed;
+}
+point body::get_position(){
+	return this->position;
 }
 istream &operator>>(istream &in, body &object){
 
@@ -24,8 +31,10 @@ ostream &operator<<(ostream &out, body &object){
 
 	return out;
 }
-point body::get_position(){
-	return this->position;
+void body::attack(body *OP){
+	if(dist_attack(this, OP)){
+
+	}
 }
 
 // lolololololololololololololololololollolololo
@@ -70,12 +79,44 @@ void opponent::randOpponent(){
 		case 6:{this->kind=new AIDS(); break;}
 	}
 }
+
+// lolololololololololololololololololollolololo
+// lloloollolololololololololololololololololo
+
 void toxic::toxic(){
 
 }
 void toxic::attack(body *OP){
 	if(dist_attack(this, OP))	OP->privilages.push_back(TOXIC);
 	body::attack(OP);
+}
+
+void speed::speed(){
+
+}
+food speed::UP_Speed(){
+	this->size_body--;
+	food result;
+	return result;
+}
+
+void sniper::sniper(){
+
+}
+void sniper::attack(){
+	float dist_shot=3*body::get_size_body();
+}
+
+void shredder::shredder(){
+
+}
+
+void Anton::Anton(){
+
+}
+
+void AIDS::AIDS(){
+
 }
 
 float distance(point *PL, point *OP){

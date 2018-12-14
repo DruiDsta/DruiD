@@ -53,7 +53,6 @@ class body
 	// parameters
 	float size_body; // При получении урона размер уменьшаетсяи и из тела выпадает еда
 	float Speed;
-	float damage;
 	point position;
 protected:
 	vector<string> privilages; // Пассивное действие на персонажа (яд, ...)
@@ -62,14 +61,13 @@ public:
 	~body();
 	void set_size_body(float *);
 	void set_Speed(float *);
-	void set_damage(float *);
+	void set_position(float *, float *);
 	float get_size_body();
 	float get_Speed();
-	float get_damage();
+	point get_position();
 	friend istream &operator>>(istream &, body &);
 	friend ostream &operator<<(ostream &, body &);
 	virtual void attack(body *);
-	point get_position();
 };
 class food
 {
@@ -106,12 +104,15 @@ public:
 class speed : body // Может ускорятся, но теряет немного массы
 {
 public:
+	// в функции передвижения сделать двойное передвижение
+	// и в ней вызывать UP_speed()
 	speed();
 	~speed();
-	void UP_Speed(/*...*/);
+	food UP_Speed(/*...*/);
 };
 class sniper : body
 {
+	float damage;
 public:
 	sniper();
 	~sniper();
@@ -137,5 +138,6 @@ public:
 	~AIDS();
 	
 };
+
 float distance(body *PL, body *OP);
 bool dist_attack(body *PL, body *OP);
