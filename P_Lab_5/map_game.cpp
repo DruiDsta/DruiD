@@ -1,8 +1,8 @@
 #include "map_game.h"
 
-void mimimap::minimap(){
+/*void mimimap::minimap(){
 	randCell();
-}
+}*/
 void minimap::randCell(){
 	switch(rand()%N_M){
 		case 1:{this->cell=shelter; break;}

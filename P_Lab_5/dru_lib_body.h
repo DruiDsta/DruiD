@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <utility>
-#include "map_game.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
 
@@ -30,35 +29,17 @@ using namespace std;
 #ifndef TOXIC
 #define TOXIC "TOXIC"
 #endif
-#ifndef speed
-#define speed "speed"
-#endif
-#ifndef sniper
-#define sniper "sniper"
-#endif
-#ifndef shredder
-#define shredder "shredder"
-#endif
-#ifndef Anton
-#define Anton "Anton"
-#endif
-#ifndef AIDS
-#define AIDS "AIDS"
-#endif
 
-
-template <typename T>
 class body
 {
 	// parameters
 	float size_body; // При получении урона размер уменьшаетсяи и из тела выпадает еда
 	float Speed;
 	point position;
-protected:
-	vector<string> privilages; // Пассивное действие на персонажа (яд, ...)
 public:
 	body();
 	~body();
+	vector<string> privilages; // Пассивное действие на персонажа (яд, ...)
 	void set_size_body(float *);
 	void set_Speed(float *);
 	void set_position(float *, float *);
@@ -68,6 +49,7 @@ public:
 	friend istream &operator>>(istream &, body &);
 	friend ostream &operator<<(ostream &, body &);
 	virtual void attack(body *);
+
 };
 class food
 {
@@ -81,27 +63,27 @@ class player //Нужно сделать функцию меню выбора п
 {
 	body *kind;
 public:
-	player(float *, float *);
+	player();
 	~player();
 };
 class opponent
 {
 	body *kind;
 public:
-	opponent(float *, float *);
-	~opponent()	{delete kind;}
+	opponent();
+	~opponent();
 	void randOpponent();
 };
 // Рассы персонажей:
 // Нужно сделать, что-бы персонажи отличались визуально
-class toxic : body // Отравляет персонажа
+class toxic : public body // Отравляет персонажа
 {
 public:
 	toxic();
 	~toxic();
 	void attack(body *);
 };
-class speed : body // Может ускорятся, но теряет немного массы
+class speed : public body // Может ускорятся, но теряет немного массы
 {
 public:
 	// в функции передвижения сделать двойное передвижение
@@ -110,7 +92,7 @@ public:
 	~speed();
 	food UP_Speed(/*...*/);
 };
-class sniper : body
+class sniper : public body
 {
 	float damage;
 public:
@@ -118,26 +100,26 @@ public:
 	~sniper();
 	void attack(body *);
 };
-class shredder : body // Наносит много урона
+class shredder : public body // Наносит много урона
 {
 public:
 	shredder();
 	~shredder();
 };
-class Anton
+class Anton : public body
 {
 public:
 	Anton();
 	~Anton();
-	
+
 };
-class AIDS
+class AIDS : public body
 {
 public:
 	AIDS();
 	~AIDS();
-	
+
 };
 
 float distance(body *PL, body *OP);
-bool dist_attack(body *PL, body *OP);
+bool dist_attack(body PL, body OP);

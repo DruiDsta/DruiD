@@ -4,9 +4,11 @@
 #include <cstdlib>
 #include <ctime>
 #include <SFML/Graphics.hpp>
-#include "dru_lib_body.h"
 using namespace std;
 
+#ifndef point
+#define point pair<float,float>
+#endif
 #ifndef N_M
 #define N_M 6
 #endif
@@ -34,8 +36,8 @@ using namespace std;
 class minimap // Карта состоит из матрици маленьких квадратиков определённого размера
 // Этот класс и есть маленьким квадратиком
 {
-	const float sizeX=/*...*/;
-	const float sizeY=/*...*/;
+	const float sizeX/*...*/;
+	const float sizeY/*...*/;
 	point center;
 	string cell;	// Имеет в себе слово, что означает вид ячейки:
 	// обычная/можно спрятаться(очень маленький персонаж)/уронит персонажа/
