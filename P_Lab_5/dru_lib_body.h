@@ -8,9 +8,6 @@
 #include <SFML/Graphics.hpp>
 using namespace std;
 
-#ifndef point
-#define point pair<float,float>
-#endif
 #ifndef pause
 #define pause system("pause")
 #endif
@@ -35,7 +32,7 @@ class body
 	// parameters
 	float size_body; // При получении урона размер уменьшаетсяи и из тела выпадает еда
 	float Speed;
-	point position;
+	pair<float, float> position;
 public:
 	body();
 	~body();
@@ -45,7 +42,7 @@ public:
 	void set_position(float *, float *);
 	float get_size_body();
 	float get_Speed();
-	point get_position();
+	pair<float, float> get_position();
 	friend istream &operator>>(istream &, body &);
 	friend ostream &operator<<(ostream &, body &);
 	virtual void attack(body *);
@@ -53,22 +50,22 @@ public:
 };
 class food
 {
-	point position;
+	pair<float, float> position;
 public:
 	food(float *, float *);
 	~food();
 	// есть задифайнина хрень size_food забей нужное значение туда и юзай size_food
 };
-class player //Нужно сделать функцию меню выбора персонажа
+template <typename T> class player //Нужно сделать функцию меню выбора персонажа
 {
-	body *kind;
+	T *kind;
 public:
 	player();
 	~player();
 };
-class opponent
+template <typename T> class opponent
 {
-	body *kind;
+	T *kind;
 public:
 	opponent();
 	~opponent();

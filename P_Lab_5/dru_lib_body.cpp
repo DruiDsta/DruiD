@@ -20,8 +20,8 @@ float body::get_size_body(){
 float body::get_Speed(){
 	return this->Speed;
 }
-point body::get_position(){
-	return this->position;
+pair<float, float> body::get_position(){
+	return this->posit i on;
 }
 istream &operator>>(istream &in, body &object){
 
@@ -49,7 +49,7 @@ food::food(float *_x, float *_y){
 // lolololololololololololololololololollolololo
 // lololololololololololololoolololololololololo
 
-player::player(){
+template <typename T> player<T>::player(){
 
 }
 /*void player::istream &operator>>(istream &in, player &object){
@@ -64,17 +64,17 @@ void player::ostream &operator<<(ostream &out, player &object){
 // lolololololololololololololololololollolololo
 // lloloollolololololololololololololololololo
 
-opponent::opponent(){
+template <typename T> opponent<T>::opponent(){
 	randOpponent();
 }
-void opponent::randOpponent(){
+template <typename T> void opponent<T>::randOpponent(){
 	switch(1+rand()%N_T){
-		case 1:{this->kind=new toxic(); break;}
-		case 2:{this->kind=new speed(); break;}
-		case 3:{this->kind=new sniper(); break;}
-		case 4:{this->kind=new shredder(); break;}
-		case 5:{this->kind=new Anton(); break;}
-		case 6:{this->kind=new AIDS(); break;}
+		case 1:{this->kind = new toxic(); break;}
+		case 2:{this->kind = new speed(); break;}
+		case 3:{this->kind = new sniper(); break;}
+		case 4:{this->kind = new shredder(); break;}
+		case 5:{this->kind = new Anton(); break;}
+		case 6:{this->kind = new AIDS(); break;}
 	}
 }
 
@@ -117,7 +117,7 @@ void AIDS::AIDS(){
 
 }
 
-float distance(point *PL, point *OP){
+float distance(pair<float, float> *PL, pair<float, float> *OP){
 
 }
 bool dist_attack(body PL, body OP){
