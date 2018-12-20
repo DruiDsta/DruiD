@@ -17,8 +17,14 @@ MM generation_segment(float *Pn, float *Pm){
 	else result.cell.second = 0;
 	return result;
 }
-void action(/*...*/){
-	
+template <typename T> void action(T *PL){
+	if(dist_action(*PL, this->segment[PL->WhPosX()][PL->WhPosY()]))
+	{
+		if(this->pair.first==support)	del_tox(PL->privilages);
+
+		else if(this->pair.first==danger)
+			dam(*PL, this->segment[PL->WhPosX()][PL->WhPosY()]);
+	}
 }
 string minimap::randCell(){
 	string result;
@@ -27,11 +33,27 @@ string minimap::randCell(){
 		case 2:{result = danger;	break;}
 		case 3:{result = support;	break;}
 		case 4:{result = food_map;	break;}
-		case 5:{result = steroids;	break;}
 		default: result = NUB;
 	}
 	return result;
 }
 string getCELL(int *n, int *m){
 	return this->segment[n][m].cell.first;
+}
+void del_tox(vector<string> VPr){
+	for (int i = 0; i != VPr.size(); ++i){
+		if (VPr[i]=="TOXIC")	VPr.erase(&VPr[i]);
+	}
+}
+void dam(T *PL, MM *Seg){
+	PL->set_size_body(PL->get_size_body()-(distance
+		(PL->get_position(), Seg->center)-
+		(PL->get_size_body()+Seg->cell.second)));
+	/*ещё выпадает еда...*/
+}
+
+template <typename T> bool dist_action(T *PL, MM *M){
+	if(distance(PL->get_position(), MM->center)
+		<=PL->get_size()+M->cell.second)	return true;
+	else return false;
 }

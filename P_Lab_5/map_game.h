@@ -4,10 +4,11 @@
 #include <cstdlib>
 #include <ctime>
 #include <SFML/Graphics.hpp>
+#include "dru_lib_body.h"
 using namespace std;
 
 #ifndef N_M
-#define N_M 6
+#define N_M 5
 #endif
 #ifndef NUB
 #define NUB "0"
@@ -24,9 +25,6 @@ using namespace std;
 #ifndef food_map
 #define food_map "F_M"
 #endif
-#ifndef steroids
-#define steroids "steroids"
-#endif
 #ifndef h
 #define h 2.5
 #endif
@@ -37,7 +35,7 @@ typedef struct tegMM
 	pair<string, float> cell;		// Имеет в себе слово, что означает вид ячейки:
 }MM;
 
-class minimap // Карта состоит из матрици маленьких квадратиков определённого размера
+template <typename T> class minimap // Карта состоит из матрици маленьких квадратиков определённого размера
 // Этот класс и есть маленьким квадратиком
 {
 	const float sizeX/*=...*/;
@@ -49,8 +47,11 @@ public:
 	minimap();
 	~minimap();
 	MM generation_segment(float *, float *);
-	void action(/*...*/);
+	template <typename T> void action(T *);
 	string randCell();
 	string getCELL(int *, int *);
-	void NewCell();
+	void del_tox(vector<string>);
+	void dam(T *, MM *);
+	// void NewCell();
 };
+template <typename T> bool dist_action(T *PL, MM *M);
