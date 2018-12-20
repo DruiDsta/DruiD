@@ -1,12 +1,11 @@
 #include "map_game.h"
 
 mimimap::minimap(){
-	for (int i = 0, float n = 2.5; i < 500; ++i, n+=h){
-		for (int j = 0, float m = 2.5; j < 500; ++j, m+=h){
+	for (int i = 0, float n = h; i < 500; ++i, n+=h){
+		for (int j = 0, float m = h; j < 500; ++j, m+=h){
 			segment[i][j] = generation_segment(*n, *m);
 		}
 	}
-	// randCell();
 }
 MM generation_segment(float *Pn, float *Pm){
 	MM result;
@@ -18,12 +17,12 @@ MM generation_segment(float *Pn, float *Pm){
 	return result;
 }
 template <typename T> void action(T *PL){
-	if(dist_action(*PL, this->segment[PL->WhPosX()][PL->WhPosY()]))
+	if(dist_action(*PL, this->segment[PL->WhSegX()][PL->WhSegY()]))
 	{
 		if(this->pair.first==support)	del_tox(PL->privilages);
 
 		else if(this->pair.first==danger)
-			dam(*PL, this->segment[PL->WhPosX()][PL->WhPosY()]);
+			dam(*PL, this->segment[PL->WhSegX()][PL->WhSegY()]);
 	}
 }
 string minimap::randCell(){
@@ -48,8 +47,8 @@ void del_tox(vector<string> VPr){
 void dam(T *PL, MM *Seg){
 	PL->set_size_body(PL->get_size_body()-(distance
 		(PL->get_position(), Seg->center)-
-		(PL->get_size_body()+Seg->cell.second)));
-	/*ещё выпадает еда...*/
+		(PL->get_size_body() + Seg->cell.second)));
+//	ещё выпадает еда...
 }
 
 template <typename T> bool dist_action(T *PL, MM *M){

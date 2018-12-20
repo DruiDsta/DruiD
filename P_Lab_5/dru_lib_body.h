@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <utility>
+#include <cmath>
+#include "map_game.h"
 #include <SFML/Graphics.hpp>
 using namespace std;
 
@@ -45,8 +47,9 @@ public:
 	pair<float, float> get_position();
 	friend istream &operator>>(istream &, body &);
 	friend ostream &operator<<(ostream &, body &);
-	virtual void attack(body *);
-
+	void attack(body *);
+	int WhSegX();
+	int WhSegY();
 };
 class food
 {
@@ -87,7 +90,7 @@ public:
 	// и в ней вызывать UP_speed()
 	speed();
 	~speed();
-	food UP_Speed(/*...*/);
+	food UP_Speed();
 };
 class sniper : public body
 {
@@ -118,5 +121,6 @@ public:
 
 };
 
-float distance(body *PL, body *OP);
-bool dist_attack(body PL, body OP);
+float distance(pair<float, float> *PL, pair<float, float> *OP);
+template <typename T> bool dist_attack(T PL, T OP);
+

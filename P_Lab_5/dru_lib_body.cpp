@@ -21,7 +21,7 @@ float body::get_Speed(){
 	return this->Speed;
 }
 pair<float, float> body::get_position(){
-	return this->posit i on;
+	return this->position;
 }
 istream &operator>>(istream &in, body &object){
 
@@ -33,7 +33,20 @@ ostream &operator<<(ostream &out, body &object){
 }
 void body::attack(body *OP){
 	if(dist_attack(*this, *OP)){
+		if(this->size_body > OP->size_body){
 
+		}
+		else OP->attack(*this);
+	}
+}
+int body::WhSegX(){
+	for (int i = 0; i < 100; ++i){
+		if((h*(i+1))<this->position.first)	return i;
+	}
+}
+int body::WhSegY(){
+	for (int i = 0; i < 100; ++i){
+		if((h*(i+1))<this->position.second)	return i;
 	}
 }
 
@@ -52,14 +65,7 @@ food::food(float *_x, float *_y){
 template <typename T> player<T>::player(){
 
 }
-/*void player::istream &operator>>(istream &in, player &object){
 
-	return in;
-}
-void player::ostream &operator<<(ostream &out, player &object){
-
-	return out;
-}*/
 
 // lolololololololololololololololololollolololo
 // lloloollolololololololololololololololololo
@@ -118,10 +124,11 @@ void AIDS::AIDS(){
 }
 
 float distance(pair<float, float> *PL, pair<float, float> *OP){
-
+	return sqrt(pow(OP.first-PL.first, 2)+pow(OP.second-PL.second, 2));
 }
-bool dist_attack(body PL, body OP){
+template <typename T> bool dist_attack(T PL, T OP){
 	if(distance(PL.get_position(), OP.get_position())
 		<=(OP.get_size_body()+PL.get_size_body()))	return true;
 	else return false;
 }
+

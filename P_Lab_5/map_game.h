@@ -26,7 +26,7 @@ using namespace std;
 #define food_map "F_M"
 #endif
 #ifndef h
-#define h 2.5
+#define h 10
 #endif
 
 typedef struct tegMM
@@ -36,11 +36,10 @@ typedef struct tegMM
 }MM;
 
 template <typename T> class minimap // Карта состоит из матрици маленьких квадратиков определённого размера
-// Этот класс и есть маленьким квадратиком
 {
-	const float sizeX/*=...*/;
-	const float sizeY/*=...*/;
-	MM segment[500][500];
+	const float sizeX;
+	const float sizeY;
+	MM segment[99][99];
 	// обычная/можно спрятаться(очень маленький персонаж)/уронит персонажа/
 	// исцеляет отравление/можно есть/временно повыщает покажатели/...
 public:

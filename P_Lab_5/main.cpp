@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    minimap MAP;
+    //minimap MAP;
     sf::RenderWindow window(sf::VideoMode(1360, 640), "Game");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::White);

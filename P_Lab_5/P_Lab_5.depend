@@ -1,11 +1,9 @@
 # depslib dependency file v1.0
-1544741241 source:c:\users\saman\dropbox\project_5\p_lab_5\main.cpp
+1545338848 source:c:\users\saman\dropbox\project_5\p_lab_5\main.cpp
 	<iostream>
 	<cstdlib>
 	<utility>
 	<SFML/Graphics.hpp>
-	"dru_lib_body.h"
-	"map_game.h"
 
 1525812018 c:\sfml_2_5_1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -435,4 +433,6 @@
 
 1544892998 source:c:\users\saman\dropbox\project_5\p_lab_5\map_game.cpp
 	"map_game.h"
+
+1545338848 source:c:\users\saman\dropbox\project_5\p_lab_5\dru_lib_body.cpp
 
