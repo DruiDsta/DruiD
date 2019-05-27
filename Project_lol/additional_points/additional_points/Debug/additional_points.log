@@ -1,0 +1,42 @@
+﻿  Admin.cpp
+c:\users\катруся\source\repos\additional_points\additional_points\admin.h(13): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+c:\users\катруся\source\repos\additional_points\additional_points\admin.h(13): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+c:\users\катруся\source\repos\additional_points\additional_points\admin.h(13): error C2238: непредвиденные лексемы перед ";"
+c:\users\катруся\source\repos\additional_points\additional_points\admin.cpp(15): warning C4244: аргумент: преобразование "__int64" в "const _Elem", возможна потеря данных
+          with
+          [
+              _Elem=char
+          ]
+c:\users\катруся\source\repos\additional_points\additional_points\admin.cpp(16): warning C4244: аргумент: преобразование "__int64" в "const _Elem", возможна потеря данных
+          with
+          [
+              _Elem=char
+          ]
+c:\users\катруся\source\repos\additional_points\additional_points\admin.cpp(38): warning C4244: аргумент: преобразование "__int64" в "const _Elem", возможна потеря данных
+          with
+          [
+              _Elem=char
+          ]
+c:\users\катруся\source\repos\additional_points\additional_points\admin.cpp(39): warning C4244: аргумент: преобразование "__int64" в "const _Elem", возможна потеря данных
+          with
+          [
+              _Elem=char
+          ]
+c:\users\катруся\source\repos\additional_points\additional_points\admin.cpp(46): warning C4244: аргумент: преобразование "__int64" в "const _Elem", возможна потеря данных
+          with
+          [
+              _Elem=char
+          ]
+c:\users\катруся\source\repos\additional_points\additional_points\admin.cpp(47): warning C4244: аргумент: преобразование "__int64" в "const _Elem", возможна потеря данных
+          with
+          [
+              _Elem=char
+          ]
+  Source.cpp
+c:\users\катруся\source\repos\additional_points\additional_points\admin.h(13): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+c:\users\катруся\source\repos\additional_points\additional_points\admin.h(13): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+c:\users\катруся\source\repos\additional_points\additional_points\admin.h(13): error C2238: непредвиденные лексемы перед ";"
+c:\users\катруся\source\repos\additional_points\additional_points\source.cpp(36): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\катруся\source\repos\additional_points\additional_points\source.cpp(62): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\катруся\source\repos\additional_points\additional_points\source.cpp(66): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+  Создание кода...
